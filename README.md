@@ -44,39 +44,39 @@ npm install
 <br>
 <b>Create a .env file in the root directory and add:</b>
   <br>
-PORT=3000
-DB_USER=postgres
-DB_HOST=localhost
-DB_NAME=your_database_name
-DB_PASSWORD=your_database_password
-SALT_ROUNDS=10
-SECRET=your_session_secret
-CLIENT_ID=your_google_client_id
-CLIENT_SECRET=your_google_client_secret
+PORT=3000<br>
+DB_USER=postgres<br>
+DB_HOST=localhost<br>
+DB_NAME=your_database_name<br>
+DB_PASSWORD=your_database_password<br>
+SALT_ROUNDS=10<br>
+SECRET=your_session_secret<br>
+CLIENT_ID=your_google_client_id<br>
+CLIENT_SECRET=your_google_client_secret<br>
 <br>
   Set up PostgreSQL Database <br>
-CREATE TABLE book (
-    id SERIAL PRIMARY KEY,
-    title TEXT,
-    author TEXT,
-    isbn TEXT UNIQUE
+CREATE TABLE book (<br>
+    id SERIAL PRIMARY KEY,<br>
+    title TEXT,<br>
+    author TEXT,<br>
+    isbn TEXT UNIQUE<br>
 );
 
-CREATE TABLE user_contacts (
-    id SERIAL PRIMARY KEY,
-    name TEXT,
-    email TEXT,
-    address TEXT,
-    contactNo TEXT,
-    queries TEXT
+CREATE TABLE user_contacts (<br>
+    id SERIAL PRIMARY KEY,<br>
+    name TEXT,<br>
+    email TEXT,<br>
+    address TEXT,<br>
+    contactNo TEXT,<br>
+    queries TEXT<br>
 );
 
-CREATE TABLE userdata (
-    id SERIAL PRIMARY KEY,
-    name TEXT,
-    email TEXT UNIQUE,
-    password TEXT
-);
+CREATE TABLE userdata (<br>
+    id SERIAL PRIMARY KEY,<br>
+    name TEXT,<br>
+    email TEXT UNIQUE,<br>
+    password TEXT<br>
+);<br>
 <br>
 
 <b>Start the server:<b>
