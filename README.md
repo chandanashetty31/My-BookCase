@@ -33,15 +33,17 @@ APIs Used: Open Library API for book data
 <h3>Installation</h3>
 <br>
 <h4>Steps</h4>
+<b>Clone the repository:</b>
 <br>
-Clone the repository:<br>
 git clone <repository-url>
 cd <repository-folder>
 <br>
-Install dependencies<br>
+<b>Install dependencies</b>
+  <br>
 npm install
 <br>
-Create a .env file in the root directory and add:<br>
+<b>Create a .env file in the root directory and add:</b>
+  <br>
 PORT=3000
 DB_USER=postgres
 DB_HOST=localhost
@@ -77,7 +79,7 @@ CREATE TABLE userdata (
 );
 <br>
 
-Start the server:
+<b>Start the server:<b>
 <br>
 npm start
 <br>
