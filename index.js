@@ -142,7 +142,7 @@ app.post("/submit", async (req, res) => {
   const { Name, Email, Address, ContactNo, Queries } = req.body;
 
   try {
-    const result = await db.query(
+    await db.query(
       "INSERT INTO user_contacts (name, email, address, contactNo, queries) VALUES ($1, $2, $3, $4, $5)",
       [Name, Email, Address, ContactNo, Queries]
     );
@@ -172,7 +172,7 @@ app.post("/logedin", async (req, res) => {
         if (err) {
           console.error("Error comparing passwords:", err);
           res.status(500).send("Server error");
-        } else {
+        } else 
           if (match) {
             // Store user in session after successful login
             req.session.user = { id: user.id, email: user.email, name: user.name };
@@ -180,7 +180,7 @@ app.post("/logedin", async (req, res) => {
           } else {
             res.send("Incorrect Password");
           }
-        }
+        
       });
     } else {
       res.send("User not found");
