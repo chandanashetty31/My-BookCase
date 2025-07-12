@@ -35,6 +35,7 @@ API	: Open Library API
 git clone https://github.com/yourusername/book-management-app.git <br>
 cd book-management-app
 <br>
+<br>
 2️⃣ Install Dependencies
 
 npm install
@@ -86,8 +87,8 @@ CREATE TABLE userdata (<br>
   password TEXT<br>
 );
 
-<br>
-## 🏃‍♂️ Start the Server
+
+### Start the Server
 
 npm start <br>
 App will run at: http://localhost:3000
