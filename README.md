@@ -47,13 +47,13 @@ Create a .env file in the root directory and add:
 PORT=3000
 
 ### PostgreSQL
-DB_USER=postgres
-DB_HOST=localhost
-DB_NAME=your_database_name
+DB_USER=postgres <br>
+DB_HOST=localhost<br>
+DB_NAME=your_database_name<br>
 DB_PASSWORD=your_database_password
 
 ### Authentication
-SALT_ROUNDS=10
+SALT_ROUNDS=10 <br>
 SECRET=your_session_secret
 
 ### Google OAuth
