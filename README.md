@@ -6,9 +6,9 @@ A full-stack Node.js web application that allows users to manage books, authenti
 ## 🔧 Features
 🔐 User authentication with:
 
-Email/password using bcrypt
+- Email/password using bcrypt
 
-Google OAuth via Passport.js
+- Google OAuth via Passport.js
 
 📖 Book management using Open Library API
 
@@ -22,17 +22,17 @@ Google OAuth via Passport.js
 
 ## 🛠️ Tech Stack
 
-Frontend	HTML, CSS, JavaScript, EJS
-Backend	Node.js, Express.js
-Database	PostgreSQL
-Auth	Passport.js (Google OAuth), bcrypt
-API	Open Library API
+Frontend :	HTML, CSS, JavaScript, EJS <br>
+Backend :Node.js, Express.js <br>
+Database :	PostgreSQL<br>
+Auth :	Passport.js (Google OAuth), bcrypt<br> 
+API	: Open Library API
 
 
 ## 🚀 Installation
 1️⃣ Clone the Repository
 
-git clone https://github.com/yourusername/book-management-app.git
+git clone https://github.com/yourusername/book-management-app.git <br>
 cd book-management-app
 <br>
 2️⃣ Install Dependencies
@@ -45,47 +45,45 @@ Create a .env file in the root directory and add:
 
 PORT=3000
 
-# PostgreSQL
+### PostgreSQL
 DB_USER=postgres
 DB_HOST=localhost
 DB_NAME=your_database_name
 DB_PASSWORD=your_database_password
 
-# Authentication
+### Authentication
 SALT_ROUNDS=10
 SECRET=your_session_secret
 
-# Google OAuth
+### Google OAuth
 CLIENT_ID=your_google_client_id
 CLIENT_SECRET=your_google_client_secret
 
 ## 🗄️ PostgreSQL Database Setup
 Run the following SQL commands to create necessary tables:
 
-sql
-Copy
-Edit
-CREATE TABLE book (
-  id SERIAL PRIMARY KEY,
-  title TEXT,
-  author TEXT,
-  isbn TEXT UNIQUE
+
+CREATE TABLE book (  <br>
+  id SERIAL PRIMARY KEY, <br>
+  title TEXT,<br>
+  author TEXT,<br>
+  isbn TEXT UNIQUE<br>
+);<br>
+
+CREATE TABLE user_contacts ( <br>
+  id SERIAL PRIMARY KEY,<br>
+  name TEXT,<br>
+  email TEXT,<br>
+  address TEXT,<br>
+  contactNo TEXT,<br>
+  queries TEXT<br>
 );
 
-CREATE TABLE user_contacts (
-  id SERIAL PRIMARY KEY,
-  name TEXT,
-  email TEXT,
-  address TEXT,
-  contactNo TEXT,
-  queries TEXT
-);
-
-CREATE TABLE userdata (
-  id SERIAL PRIMARY KEY,
-  name TEXT,
-  email TEXT UNIQUE,
-  password TEXT
+CREATE TABLE userdata (<br>
+  id SERIAL PRIMARY KEY,<br>
+  name TEXT,<br>
+  email TEXT UNIQUE,<br>
+  password TEXT<br>
 );
 
 <br>
