@@ -172,7 +172,7 @@ app.post("/logedin", async (req, res) => {
         if (err) {
           console.error("Error comparing passwords:", err);
           res.status(500).send("Server error");
-        } else
+        } else {
           if (match) {
             // Store user in session after successful login
             req.session.user = { id: user.id, email: user.email, name: user.name };
