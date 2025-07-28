@@ -55,7 +55,7 @@ function isAuthenticated(req, res, next) {
 }
 
 
-app.get("/books", isAuthenticated, async (req, res) => {
+app.get("/", isAuthenticated, async (req, res) => {
   const books = ["9788172234980", "9781786330895","9781493724284"];
 
   try {
@@ -142,7 +142,7 @@ app.post("/submit", async (req, res) => {
   const { Name, Email, Address, ContactNo, Queries } = req.body;
 
   try {
-    const result = await db.query(
+    await db.query(
       "INSERT INTO user_contacts (name, email, address, contactNo, queries) VALUES ($1, $2, $3, $4, $5)",
       [Name, Email, Address, ContactNo, Queries]
     );
@@ -172,15 +172,15 @@ app.post("/logedin", async (req, res) => {
         if (err) {
           console.error("Error comparing passwords:", err);
           res.status(500).send("Server error");
-        } else {
+        } else
           if (match) {
             // Store user in session after successful login
             req.session.user = { id: user.id, email: user.email, name: user.name };
-            res.redirect("/books");
+            res.redirect("/");
           } else {
             res.send("Incorrect Password");
           }
-        }
+        
       });
     } else {
       res.send("User not found");
@@ -203,7 +203,7 @@ app.get(
   passport.authenticate("google", { failureRedirect: "/login" }),
   (req, res) => {
     req.session.user = req.user; // Store user in session manually
-    res.redirect("/books"); 
+    res.redirect("/"); 
   }
 );
 
