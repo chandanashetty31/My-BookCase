@@ -181,7 +181,7 @@ app.post("/logedin", async (req, res) => {
             res.send("Incorrect Password");
           }
         
-      });
+      }});
     } else {
       res.send("User not found");
     }
@@ -195,6 +195,8 @@ app.get(
   "/auth/google",
   passport.authenticate("google", {
     scope: ["profile", "email"],
+    prompt: "consent",               // force Google to show prompt
+    accessType: "offline",    // request offline access to get refresh token
   })
 );
 
@@ -220,12 +222,12 @@ passport.use(
       try {
         console.log(profile);
         const result = await db.query("SELECT * FROM userdata WHERE email = $1", [
-          profile.email,
+          profile.emails[0].value,
         ]);
         if (result.rows.length === 0) {
           const newUser = await db.query(
             "INSERT INTO userdata (name ,email, password) VALUES ($1,$2, $3)",
-            [profile.displayName,profile.email, "google"]
+            [profile.displayName, profile.emails[0].value, "google"]
           );
           return cb(null, newUser.rows[0]);
         } else {
