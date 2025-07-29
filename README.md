@@ -1,4 +1,4 @@
-## 📚 Book Management App
+## 📚 Book Management WebApp
 A full-stack Node.js web application that allows users to manage books that they have read, authenticate with Google OAuth or email/password, and store data securely in a PostgreSQL database. Book data is fetched from the Open Library API, and user interactions are captured through dynamic forms.
 <br>
 
