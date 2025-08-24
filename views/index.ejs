@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyBooks</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <main>
@@ -14,12 +15,16 @@
                 <li><a href="/contactme">Contact me </a></li>
                 <li><a href="/about" >About</a></li>
               </ul>
-            
-              
-              <div class="text-end">
+ <div class="text-end">
                 <button  ><a href="/logout" id="logout">Logout</a></button>
               </div>
             </div>
+            <div class="search-wrapper">
+  <input type="text" id="searchBar" placeholder="Search for a book...">
+  <div id="suggestions" class="suggestions"></div>
+</div>
+              
+             
         
           <div id="books">
     <header>
@@ -68,6 +73,61 @@
 </div>
 </body>
 <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const searchBar = document.getElementById("searchBar");
+    const suggestionsBox = document.getElementById("suggestions");
+
+    
+    const myBooks = [
+        { title: "The Alchemist", url: "/alchemist" },
+        { title: "Ikigai", url: "/ikigai" },
+        { title: "Black Beauty", url: "/blackbeauty" }
+    ];
+
+    searchBar.addEventListener("input", async function () {
+        let query = searchBar.value.toLowerCase().trim();
+        suggestionsBox.innerHTML = "";
+
+        if (query.length === 0) return;
+
+        
+        let filtered = myBooks.filter(book =>
+            book.title.toLowerCase().includes(query)
+        );
+
+        filtered.forEach(book => {
+            let div = document.createElement("div");
+            div.textContent = book.title + " (My Notes)";
+            div.onclick = () => window.location.href = book.url;
+            suggestionsBox.appendChild(div);
+        });
+
+       
+        try {
+            let res = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=5`);
+            let data = await res.json();
+
+            data.docs.forEach(book => {
+                let title = book.title;
+                let key = book.key; 
+                let div = document.createElement("div");
+                div.textContent = title;
+                div.onclick = () => window.open(`https://openlibrary.org${key}`, "_blank");
+                suggestionsBox.appendChild(div);
+            });
+        } catch (err) {
+            console.error("Error fetching from OpenLibrary", err);
+        }
+    });
+
+
+    document.addEventListener("click", function (e) {
+        if (!searchBar.contains(e.target) && !suggestionsBox.contains(e.target)) {
+            suggestionsBox.innerHTML = "";
+        }
+    });
+});
    
    document.addEventListener("DOMContentLoaded", function () {
     const booksContainer = document.getElementById("book-list");
@@ -76,13 +136,13 @@
     function sortBooks(criteria) {
         books.sort((a, b) => {
             if (criteria === "date") {
-                return new Date(b.dataset.date) - new Date(a.dataset.date); // Convert string to Date
+                return new Date(b.dataset.date) - new Date(a.dataset.date); 
             } else {
-                return Number(b.dataset.rating) - Number(a.dataset.rating); // Convert string to number
+                return Number(b.dataset.rating) - Number(a.dataset.rating); 
             }
         });
 
-        books.forEach(book => booksContainer.appendChild(book)); // Reorder
+        books.forEach(book => booksContainer.appendChild(book)); 
     }
 
     document.getElementById("sort-recent").addEventListener("click", function (event) {
