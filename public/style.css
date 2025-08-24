@@ -3,7 +3,48 @@
     padding: 0px;
     box-sizing: border-box;
 }
+.search-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-top: 15px;
+  margin-left: 20px; 
+}
 
+
+#searchBar {
+  width: 300px;
+  height: 36px;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: left;
+}
+
+
+.suggestions {
+  position: absolute;
+  top: 100%;  
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  width: 100%;  
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  border-radius: 4px;
+}
+
+.suggestions div {
+  padding: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.suggestions div:hover {
+  background: #f0f0f0;
+}
 .container{
     width: 100%;
     position: relative;
@@ -170,16 +211,132 @@ h3{
     font-size: 20px;
     margin: 0px 0px 0px 10px;
 }
-@media (max-width: 700px){
-    #books{
-        height: auto;
-        width :100%;  
-        position: absolute;
+
+
+
+@media (max-width: 768px) {
+  
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  .nav {
+    flex-direction: column;
+    text-align: center;
+  }
+  li {
+    padding: 10px;
+  }
+
+  
+  .search-wrapper {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+  }
+  #searchBar {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+  }
+  #logout {
+    position: static;
+    margin: 10px auto;
+    display: block;
+    text-align: center;
+    width: 100px;
+  }
+
+  #books {
+    width: 100%;
     left: 0;
-    } 
-    #logout{
-        position: absolute;
-        right: 0;
-        
-    }
+    padding: 10px;
+  }
+  .book {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+  img {
+    float: none;
+    display: block;
+    margin: 0 auto 10px auto;
+    max-width: 90%;
+    height: auto;
+  }
+  h3 {
+    text-align: center;
+    font-size: 18px;
+  }
+  .intro {
+    font-size: 16px;
+    text-align: justify;
+  }
+  .shortNotes {
+    font-size: 18px;
+  }
 }
+
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 22px;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  .intro {
+    font-size: 14px;
+  }
+  .shortNotes {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .nav {
+    flex-direction: row;   
+    justify-content: center;
+    flex-wrap: wrap;      
+  }
+
+  .nav li {
+    padding: 10px;
+  }
+
+  #logout {
+    position: static;
+    margin-left: 10px;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+
+
+  .search-wrapper {
+    width: 90%;
+    margin: 10px auto;
+    text-align: center;
+  }
+  #searchBar {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+  }
+  .suggestions {
+    width: 100%;
+  }
+}
+
